@@ -1,8 +1,11 @@
 package com.entertainment;
 
+import java.util.Objects;
+
 public class Television {
     private String brand;
     private int volume;
+
     private Tuner tuner = new Tuner();
 
     public Television() {
@@ -36,6 +39,35 @@ public class Television {
 
     public void changeChannel(int channel) {
         tuner.setChannel(channel);
+    }
+
+    @Override
+    public int hashCode() {
+        /*
+         * This is a poorly written hash function, because it easily yields "hash collisions".
+         * A hash collision is when "different" objects have the same hash code (just by coincident).
+         */
+        // return getBrand().length() + getVolume();
+
+        // Instead, we rely on Objects.hash() to give us a "scientifically correct" hash function.
+        return  Objects.hash(getBrand(), getVolume());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean result = false;
+
+        // proceed only if 'obj' is really referencing a Television client
+        if (obj instanceof Television) {
+            // safely downcast 'obj' to more specific reference Television
+            Television other = (Television) obj;
+
+            // do the checks; business equality is defined by brand, volume bring the same
+            result = Objects.equals(this.getBrand(), other.getBrand()) && // null-safe check
+                    this.getVolume() == other.getVolume();        // primitives can't be null
+        }
+
+        return result;
     }
 
     @Override
