@@ -20,16 +20,16 @@ public class TelevisionClient {
 
         // show behavior of the equals method
         Television tvA = new Television("Sony", 50);
-        Television tvB = new Television("LG", 52);
+        Television tvB = new Television("Sony", 50);
         System.out.println(tvA);
         System.out.println(tvB);
         System.out.println("tvA==tvB:" + (tvA == tvB)); // false
         System.out.println("tvA.equals(tvB):" + tvA.equals(tvB));  // true
         System.out.println();
 
-       // System.out.println(tvA.hashCode()); // 80069516
-       // System.out.println(tvB.hashCode()); // 76250
-       // System.out.println();
+        System.out.println(tvA.hashCode()); // 80069516
+        System.out.println(tvB.hashCode()); // 76250
+        System.out.println();
 
         Set<Television> tvs = new HashSet<>();
         tvs.add(tvA);
