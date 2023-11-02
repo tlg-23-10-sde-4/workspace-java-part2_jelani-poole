@@ -2,14 +2,14 @@ package com.entertainment;
 
 import java.util.Objects;
 
+/*
+ * To be"consistent with equals," whatever fields
+ */
+
+
 public class Television implements Comparable<Television>{
     private String brand;
     private int volume;
-
-    @Override
-    public int compareTo(Television other) {
-        return 0;
-    }
 
     private Tuner tuner = new Tuner();
 
@@ -96,7 +96,15 @@ public class Television implements Comparable<Television>{
         return result;
     }
 
+    @Override
+    public int compareTo(Television other) {
+        int result = this.getBrand().compareTo(other.getBrand());
 
+        if (result == 0) { // tied on brand, i.e., they have the same brand
+            result = Integer.compare(this.getVolume(), other.getVolume());
+        }
+        return result;
+    }
 
     @Override
     public String toString() {

@@ -2,6 +2,7 @@ package com.entertainment.client;
 
 import com.entertainment.Television;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -22,18 +23,16 @@ public class TelevisionClient {
         // show behavior of the equals method
         Television tvA = new Television("Sony", 50);
         Television tvB = new Television("Sony", 50);
-        Television tvC = new Television("Samsung", 32);
-        Television tvD = new Television("LG", 12);
+        Television tvC = new Television("Sony", 52);
+        Television tvD = new Television("Sony", 12);
 
-        System.out.println(tvA);
-        System.out.println(tvB);
         System.out.println("tvA==tvB:" + (tvA == tvB)); // false
         System.out.println("tvA.equals(tvB):" + tvA.equals(tvB));  // true
         System.out.println();
 
-        System.out.println(tvA.hashCode()); // 80069516
-        System.out.println(tvB.hashCode()); // 76250
-        System.out.println();
+        //System.out.println(tvA.hashCode()); // 80069516
+        //System.out.println(tvB.hashCode()); // 76250
+        //System.out.println();
 
         Set<Television> tvs = new TreeSet<>();
         tvs.add(tvA);
