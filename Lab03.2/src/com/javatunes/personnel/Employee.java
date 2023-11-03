@@ -29,6 +29,7 @@ public abstract class Employee implements TaxPayer, NamedEntity {
     /**
      * All employees get paid, but they implement this differently.
      * Method in base class but NO implementation.
+     *
      * @return
      */
     public abstract double pay();

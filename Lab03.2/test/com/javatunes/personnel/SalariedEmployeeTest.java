@@ -2,7 +2,9 @@ package com.javatunes.personnel;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import java.sql.Date;
+
 import static org.junit.Assert.*;
 
 public class SalariedEmployeeTest {
@@ -30,7 +32,6 @@ public class SalariedEmployeeTest {
     @Test
     public void equals_shouldReturnFalse_whenSameName_differentHireDate_sameSalary() {
         emp2.setHireDate(Date.valueOf("2023-11-02"));
-
         assertNotEquals(emp, emp2);
     }
 
@@ -44,7 +45,7 @@ public class SalariedEmployeeTest {
 
     @Test
     public void equals_shouldReturnTrue_allPropertiesSame() {
-        assertEquals(emp,emp2);  // does an equals() check
+        assertEquals(emp, emp2);  // does an equals() check
         assertTrue(emp.equals(emp2));  // alternative assertion
     }
 
