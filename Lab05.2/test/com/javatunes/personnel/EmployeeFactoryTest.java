@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
+
 import static java.util.Date.*;
 
 import org.junit.Before;
@@ -22,12 +23,12 @@ public class EmployeeFactoryTest {
      * type       HE or SE
      * name       Jackie
      * hireDate   1990-08-24
-     *
+     * <p>
      * salary     50000.00
      * OR
      * rate       50.0
      * hours      40.0
-     *
+     * <p>
      * NOTES:
      * 1. yes, we have redundant setup code, and even some redundant test code (to keep it simple)
      * 2. this is representative of how UIs send user input data to an application:

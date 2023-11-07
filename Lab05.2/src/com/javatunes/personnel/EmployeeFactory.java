@@ -9,6 +9,7 @@
 package com.javatunes.personnel;
 
 //import java.util.Date;
+
 import java.sql.Date;
 import java.util.Map;
 
@@ -30,21 +31,20 @@ public class EmployeeFactory {
         Employee emp = null;
 
         // read the 'indicator' out of the map
-        String type   = inputMap.get("type");
+        String type = inputMap.get("type");
 
         if (!"SE".equals(type) && !"HE".equals(type)) {
             throw new IllegalArgumentException("Invalid type: " + type + ". Must be SE or HE.");
         }
 
 
-        String name   = inputMap.get("name");
+        String name = inputMap.get("name");
         Date hireDate = Date.valueOf(inputMap.get("hireDate"));
 
         if ("SE".equals(type)) {
             Double salary = Double.valueOf(inputMap.get("salary"));
             emp = new SalariedEmployee(name, hireDate, salary);
-        }
-        else {
+        } else {
             Double rate = Double.valueOf(inputMap.get("rate"));
             Double hours = Double.valueOf(inputMap.get("hours"));
             emp = new HourlyEmployee(name, hireDate, rate, hours);
