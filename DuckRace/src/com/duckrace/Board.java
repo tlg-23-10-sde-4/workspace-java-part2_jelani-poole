@@ -38,10 +38,13 @@ import java.util.*;
  *   17       17    Dom        1    DEBIT_CARD
  */
 
-class Board {
+public class Board {
     private final Map<Integer,String> studentIdMap = loadStudentIdMap();
     private final Map<Integer,DuckRacer> racerMap  = new TreeMap<>();
 
+    public int maxID() {
+        return studentIdMap.size();
+    }
     /*
      * Updates the board (racerMap) by making a DuckRacer "win"
      * This could mean fetching an existing DuckRacer from racerMap.
@@ -63,7 +66,7 @@ class Board {
     }
 
     // shows the "board data" (racerMap) to the end user
-    // TODO: render the data show it looks like the board you see everyday
+    // TODO: render the data so it looks like the board you see everyday
     //
     public void show() {
         Collection<DuckRacer> racers = racerMap.values();
@@ -72,11 +75,6 @@ class Board {
             System.out.printf("%s    %s    %s    %s\n",
                     racer.getId(), racer.getName(), racer.getWins(), racer.getRewards());
         }
-    }
-
-    // TESTING PURPOSES ONLY
-    void dumpStudentIdMap() {
-        System.out.println(studentIdMap);
     }
 
     private Map<Integer, String> loadStudentIdMap() {
