@@ -19,9 +19,9 @@ public class Order {
     private final Location location;
     private double cost;
 
-    public Order(String id, Location online) {
+    public Order(String id, Location location) {
         this.id = id;
-        this.location = location();
+        this.location = location;
     }
 
     /* DONE:
