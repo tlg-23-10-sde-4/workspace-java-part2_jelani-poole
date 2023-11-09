@@ -14,7 +14,7 @@ implements Runnable {
   @Override
   public void run() {
     while (true) {
-      System.out.println("RepeatingPrinter.run");
+      System.out.println("RepeatingPrinter.run"); // Repeating printer isa a runnable
       try {
         Thread.sleep(1000);
       }

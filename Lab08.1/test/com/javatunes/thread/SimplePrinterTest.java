@@ -11,9 +11,11 @@ package com.javatunes.thread;
 public class SimplePrinterTest {
 
   public static void main(String[] args) {
-    Thread thd1 = new Thread(new SimplePrinter());
+    Thread thd1 = new Thread(new SimplePrinter()); // IS-A Runnable
     thd1.start();
     
-    // TODO: create another Thread, passing in a lambda as its Runnable - then start it
+    //  create another Thread, passing in a lambda as its Runnable - then
+    Thread thd2 = new Thread( () -> System.out.println("Lambda as the Runnable") );
+    thd2.start();
   }
 }
