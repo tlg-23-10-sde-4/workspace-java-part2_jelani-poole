@@ -9,9 +9,7 @@ package com.javatunes.personnel;
 
 import java.time.LocalDate;
 
-public class SalariedEmployee
-extends Employee
-implements Runnable {
+public class SalariedEmployee extends Employee implements Runnable {
   private Double salary;
   
   public SalariedEmployee(String name, LocalDate hireDate) {
@@ -22,14 +20,14 @@ implements Runnable {
     this(name, hireDate);
     setSalary(salary);
   }
-  
+
   public void takeVacation() {
     takeVacation(false);
   }
-  
+
   public void takeVacation(boolean fork) {
     System.out.println(getName() + " taking vacation...");
-    
+
     if (fork) {
       Thread vacationThread = new Thread(this);  // this object is Runnable
       vacationThread.setName("vacation-thread");
@@ -39,7 +37,7 @@ implements Runnable {
       run();  // normally don't call run() directly, just here for the demo
     }
   }
-  
+
   /*
    * Actual "take vacation" behavior here.
    * Vacation (in seconds) is defined as the length of their name(!)
@@ -47,13 +45,13 @@ implements Runnable {
   @Override
   public void run() {
     try {
-      Thread.sleep(getName().length() * 1000);
+      Thread.sleep(getName().length() * 1000L);
     }
     catch (InterruptedException ignored) {
     }
     System.out.println(getName() + " has returned");
   }
-  
+
   public Double getSalary() {
     return this.salary;
   }
@@ -61,7 +59,7 @@ implements Runnable {
   public void setSalary(Double salary) {
     this.salary = salary;
   }
-  
+
   @Override
   public String toString() {
     return super.toString() + ", salary=" + getSalary();
