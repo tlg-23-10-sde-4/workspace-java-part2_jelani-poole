@@ -66,7 +66,7 @@ public class TelevisionTest {
         }
     }
 
-    @Test
+    @Test(expected = InvalidChannelException.class)
     public void changeChannel_setsChannelSuccessfully() throws InvalidChannelException {  // unhandled checked exception
         Television tv = new Television();
 
