@@ -1,6 +1,6 @@
 package com.duckrace;
 
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -38,9 +38,37 @@ import java.util.*;
  *   17       17    Dom        1    DEBIT_CARD
  */
 
-public class Board {
+public class Board implements Serializable {
+    private static final String dataFilePath = "data/board.dat";
+
+    /*
+     * If data/board.dat exist, read that file into a board object and return it.
+     * We will use Java's built-in object serialization feature.
+     * Otherwise, return a new Board().
+     */
+    public static Board getInstance() {
+        Board board = null;
+
+        if (Files.exists(Path.of(dataFilePath))) {
+            try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(dataFilePath))) {
+                board = (Board) in.readObject();
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            board = new Board();
+        }
+        return board;
+    }
+
     private final Map<Integer,String> studentIdMap = loadStudentIdMap();
     private final Map<Integer,DuckRacer> racerMap  = new TreeMap<>();
+
+    // prevent instantiation from outside, it's only done in here (in getInstance() method)
+    private Board() {
+    }
 
     public int maxID() {
         return studentIdMap.size();
@@ -63,6 +91,20 @@ public class Board {
             racerMap.put(id, racer);
         }
         racer.win(reward);
+        save();
+    }
+
+    /*
+     * Writes *this* Board object to binary file data/board.dat
+     * Uses built-in Java object serialization facility.
+     */
+    private void save() {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(dataFilePath))) {
+            out.writeObject(this);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // shows the "board data" (racerMap) to the end user

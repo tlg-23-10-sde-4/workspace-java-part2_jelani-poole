@@ -6,8 +6,10 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class DuckRaceController {
-    private final Board board = new Board();
+    private final Board board = Board.getInstance();
+    //private final BoardView boardView = new BoardView(board);
     private final Scanner scanner = new Scanner(System.in);
+    private final int maxID = board.maxID();
 
     public void execute() {
         welcome();
@@ -61,9 +63,9 @@ public class DuckRaceController {
 
     private void welcome() {
         System.out.println();
-        System.out.println("- - - - - - -  - -  - - -  - - - -  - - - -  - - - - - - - - - - -");
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
         System.out.println("W E L C O M E  T O  T H E  D U C K  R A C E  A P P L I C A T I O N");
-        System.out.println("- - - - - - -  - -  - - -  - - - -  - - - -  - - - - - - - - - - -");
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
         System.out.println();
     }
 
