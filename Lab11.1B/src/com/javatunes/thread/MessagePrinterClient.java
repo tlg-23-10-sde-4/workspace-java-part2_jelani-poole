@@ -7,18 +7,31 @@
  */
 package com.javatunes.thread;
 
-public class MessagePrinterClient {
+public class MessagePrinterClient implements Runnable{
 
-  public static void main(String[] args) {
-    // DONE: create two instances of your thread subclass and start them up
-    MessagePrinter printer1 = new MessagePrinter("Roses are red");  // take the default interval
-    MessagePrinter printer2 = new MessagePrinter("Violets are blue", 1375);
-    
-    printer1.start();
-    printer2.start();
-    
-    // just for demonstration purposes - this shows why you don't call run() directly
-    // printer1.run();
-    // printer2.run();
-  }
+    public static void main(String[] args) {
+        // TODO: create two instances of your thread subclass and start them up
+
+        MessagePrinter printer1 = new MessagePrinter("roses are red", 10, 3000);
+        Thread thd1 = new Thread (printer1);
+        printer1.start();
+
+        MessagePrinter printer2 = new MessagePrinter("violets are blue", 100, 200);
+        Thread thd2 = new Thread (printer2);
+        printer2.start();
+
+        MessagePrinter printer3 = new MessagePrinter("everything is red");
+        Thread thd3 = new Thread (printer3);
+        printer3.start();
+
+        MessagePrinter printer4 = new MessagePrinter("OH GOD, THE GARDEN IS ON FIRE", 16, 2000);
+        Thread thd4 = new Thread (printer4);
+        printer4.start();
+    }
+
+
+    @Override
+    public void run() {
+
+    }
 }
